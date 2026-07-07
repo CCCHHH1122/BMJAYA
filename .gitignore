@@ -1,0 +1,15 @@
+*.asv
+*.m~
+*.fig
+*.tif
+*.log
+*.tmp
+*.aux
+*.out
+*.blg
+*.synctex.gz
+slprj/
+codegen/
+.DS_Store
+Thumbs.db
+
