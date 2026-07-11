@@ -41,13 +41,3 @@ If you want to specify the internal subpopulation count:
 K = 4;
 [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub, K);
 ```
-
-## Removed From The Full Experimental Repository
-
-The following materials were intentionally removed to keep this repository
-focused on BMJAYA itself:
-
-- comparison algorithms such as PSO, GWO, DE, WSO, JAYA, SBOA, and DOA;
-- CEC-2017 and CEC-2022 benchmark support data and MEX files;
-- result CSV files, figures, convergence plots, and ranking tables;
-- ablation-study scripts and engineering-validation notes.
