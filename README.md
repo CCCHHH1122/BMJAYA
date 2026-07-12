@@ -10,7 +10,7 @@ the manuscript:
 - JAYA update attempted first for each individual;
 - conditional Best-Mean-Random repair when the JAYA update fails;
 - global elite sharing among subpopulations;
-- fixed internal subpopulation count `K = 4` by default.
+- fixed internal subpopulation count `K = 4`.
 
 ## Files
 
@@ -33,11 +33,4 @@ ub = 100;
 objfun = @(x) sum(x.^2);
 
 [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub);
-```
-
-If you want to specify the internal subpopulation count:
-
-```matlab
-K = 4;
-[best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub, K);
 ```

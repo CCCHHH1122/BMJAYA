@@ -1,4 +1,4 @@
-function [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub, K_req)
+function [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub)
 % BMJAYA  Parameter-free multi-strategy enhanced JAYA optimizer.
 %
 %   [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub)
@@ -12,7 +12,6 @@ function [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub, K_req)
 %     MaxFEs  - maximum number of function evaluations
 %     lb      - lower bound, scalar or 1-by-D vector
 %     ub      - upper bound, scalar or 1-by-D vector
-%     K_req   - optional number of subpopulations; default is 4
 %
 %   Outputs:
 %     best_f  - best objective value found
@@ -24,10 +23,6 @@ function [best_f, best_x, curve] = BMJAYA(objfun, D, N, MaxFEs, lb, ub, K_req)
 %     2. JAYA update attempted first for each individual;
 %     3. conditional Best-Mean-Random (BMR) repair only if JAYA fails;
 %     4. global elite sharing after each generation.
-
-if nargin < 7 || isempty(K_req)
-    K_req = 4;
-end
 
 lb = reshape(lb, 1, []);
 ub = reshape(ub, 1, []);
@@ -46,7 +41,10 @@ if N < 1 || MaxFEs < 1
     error('N and MaxFEs must be positive integers.');
 end
 
-K = min(max(1, round(K_req)), N);
+K = 4;
+if N < K
+    error('N must be at least 4 because BMJAYA uses a fixed K = 4 subpopulation structure.');
+end
 sizes = split_sizes(N, K);
 
 subX = cell(K, 1);
